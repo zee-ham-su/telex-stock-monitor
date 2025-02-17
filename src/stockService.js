@@ -1,6 +1,12 @@
+require('dotenv').config();
 const axios = require('axios');
 
-async function fetchStockPrices(apiKey, symbols) {
+async function fetchStockPrices(symbols) {
+  const apiKey = process.env.ALPHA_VANTAGE_API_KEY;
+  if (!apiKey) {
+    throw new Error("API key is missing. Set ALPHA_VANTAGE_API_KEY in your .env file.");
+  }
+
   const symbolList = symbols.split(',');
   const results = [];
 

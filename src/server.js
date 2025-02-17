@@ -1,12 +1,14 @@
 const express = require('express');
 const { fetchStockPrices, formatMessage } = require('./stockService');
+require('dotenv').config();
+
 const app = express();
 app.use(express.json());
 
 app.post('/fetch-stocks', async (req, res) => {
-  const { settings } = req.body;
+  const { symbols } = req.body.settings;
   try {
-    const stocks = await fetchStockPrices(settings.api_key, settings.symbols);
+    const stocks = await fetchStockPrices(symbols);
     const message = formatMessage(stocks);
     res.json({ content: message });
   } catch (error) {
