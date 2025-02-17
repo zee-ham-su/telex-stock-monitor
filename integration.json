@@ -1,26 +1,29 @@
 {
   "name": "Stock Price Monitor",
-  "type": "interval",
-  "description": "Posts real-time stock prices at scheduled intervals.",
-  "settings": [
-    {
-      "name": "api_key",
+  "description": "Fetches live stock prices and posts updates in a Telex channel.",
+  "type": "interval",  
+  "interval": 3600,  
+  "settings": {
+    "api_key": {
       "type": "string",
-      "label": "Financial API Key",
-      "required": true
+      "description": "API key for the stock data provider."
     },
-    {
-      "name": "symbols",
+    "symbols": {
       "type": "string",
-      "label": "Stock Symbols (e.g., AAPL,MSFT)",
-      "required": true
-    },
-    {
-      "name": "interval_minutes",
-      "type": "number",
-      "label": "Update Frequency (minutes)",
-      "default": 15
+      "description": "Comma-separated list of stock symbols to track (e.g., AAPL,MSFT,GOOGL)."
     }
-  ],
-  "endpoint": "https://your-deployed-service.com/fetch-stocks"
+  },
+  "webhook": {
+    "method": "POST",
+    "url": "https://deployed-server.com/fetch-stocks",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "settings": {
+        "api_key": "$api_key",
+        "symbols": "$symbols"
+      }
+    }
+  }
 }
