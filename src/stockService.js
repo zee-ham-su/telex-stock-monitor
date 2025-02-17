@@ -20,6 +20,12 @@ async function fetchStockPrices(symbols) {
         symbol: data['01. symbol'],
         price: data['05. price'],
         change: data['09. change'],
+        lastTradeTime: data['08. latest trading day'],
+        volume: data['06. volume'],
+        open: data['02. open'],
+        high: data['03. high'],
+        low: data['04. low'],
+        previousClose: data['08. previous close'],
         changePercent: data['10. change percent']
       });
     } catch (error) {
