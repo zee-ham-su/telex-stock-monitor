@@ -15,7 +15,7 @@
   },
   "webhook": {
     "method": "POST",
-    "url": "https://deployed-server.com/fetch-stocks",
+    "url": " https://0773-154-161-150-206.ngrok-free.app/fetch-stocks",
     "headers": {
       "Content-Type": "application/json"
     },
