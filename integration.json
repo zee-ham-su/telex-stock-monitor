@@ -1,0 +1,26 @@
+{
+  "name": "Stock Price Monitor",
+  "type": "interval",
+  "description": "Posts real-time stock prices at scheduled intervals.",
+  "settings": [
+    {
+      "name": "api_key",
+      "type": "string",
+      "label": "Financial API Key",
+      "required": true
+    },
+    {
+      "name": "symbols",
+      "type": "string",
+      "label": "Stock Symbols (e.g., AAPL,MSFT)",
+      "required": true
+    },
+    {
+      "name": "interval_minutes",
+      "type": "number",
+      "label": "Update Frequency (minutes)",
+      "default": 15
+    }
+  ],
+  "endpoint": "https://your-deployed-service.com/fetch-stocks"
+}
